@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'chess'
+
+include ':chess-common'
+include ':chess-db'
+include ':chess-api'
+include ':chess-console'
+

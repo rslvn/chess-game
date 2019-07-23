@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  mongodb:
+    image: mongo
+    container_name: chess-mongodb
+    ports:
+      - "27017:27017"
+
+  console:
+    build: ./chess-console/
+    container_name: chess-console
+    ports:
+      - "9090:8080"
+    depends_on:
+      - mongodb
+    restart: always
+
+  api:
+    build: ./chess-api/
+    container_name: chess-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    restart: always
