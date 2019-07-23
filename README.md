@@ -46,6 +46,7 @@ The application has 2 different main applications. The applications are `chess-c
 
 ## stacks
 - Spring Boot
+- Spring Microservices
 - Oauth2
 - Hibernate/JPA
 - Redis
