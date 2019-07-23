@@ -82,7 +82,12 @@ The database is `postgresql`. A relational database is more secure for data cons
 This database contains console_user, console_user_role, the tables for `oauth2` (user_info, scope, applications, application_scope, application_user).
 Flyway executes all scripts to create or migrate table/table data.
 
-All database models has `hibernate/JPA` descriptions. 
+All database models has `hibernate/JPA` descriptions.
+
+#### roles
+The `chess-console` has 2 roles.
+- CONSOLE_ADMIN: the administrator user of the application.
+- CONSOLE_USER: the client owner. A client owner can create many clients.
  
 ### chess-game
 
@@ -130,3 +135,8 @@ Normally, the data is in database. But going to database to have user data for a
 All microservices has their own `Dockerfile`s. The `docker` files contains all configurations to run the app and integrate the app with the other microservices. 
 
 `docker-compose` builds all `docker` images and run the docker containers with necessary scaling.
+
+#### roles
+The `chess-console` has 2 roles.
+- ADMIN: the administrator user of the game application. Admins can list all resources but can delete or update just their own resources.
+- PLAYER: the player. Players can join a league, win trophies and play game.
