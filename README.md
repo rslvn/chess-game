@@ -41,6 +41,7 @@ The application has 2 different main applications. The applications are `chess-c
 
 ## stacks
 - Spring Boot
+- Oauth2
 - Hibernate/JPA
 - Redis
 - Postgresql
@@ -48,7 +49,7 @@ The application has 2 different main applications. The applications are `chess-c
 - Flyway
 - Swagger
 - pojo-tester
- 
+- [pdfbox](https://pdfbox.apache.org/)
  
 ## applications
 
@@ -100,12 +101,12 @@ With the valid access token, they can access `chess-game` APIs. All APIs have th
 
 #### microservices
 - auth-service: manages login/register of users
-- player-service: 
+- player-service: list services for player with/without trophies
 - game-service: save/pause/resume game
 - play-service:  manages movement in a game. Decides the movement available or no. And decides to winner. 
 - league-service: create/update/delete services for leagues. create/update/delete is an ADMIN authorization. All users can retrieve all leagues.
 - trophies-service: create/update/delete services for trophies. create/update/delete is an ADMIN authorization. All users can retrieve all trophies.
-- export-service: the service for exporting data as PDF in the system. The export data can be a league schedule/score table table, game result and details, player raitings.
+- export-service: the service for exporting data as PDF in the system. The export data can be a league schedule/score table table, game result and details, player ratings. `pdfbox` is used to create pdf files.
  
 #### APIs/documentation
 
