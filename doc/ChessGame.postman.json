@@ -1,0 +1,184 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Chess",
+		"_postman_id": "f3526168-23e2-4c57-832b-24702a92f6fc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api app test",
+			"description": "",
+			"item": [
+				{
+					"name": "API_KEY exist",
+					"request": {
+						"url": "http://localhost:8080/api/game/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "API_KEY",
+								"value": "5d34c2407f86c600019e7395",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "API_KEY does not exist",
+					"request": {
+						"url": "http://localhost:8080/api/game",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "wrong api key",
+					"request": {
+						"url": "http://localhost:8080/api/game/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "API_KEY",
+								"value": "5d34c2407f86c600019e739",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"description": "",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"url": "http://localhost:9090/console/auth/register",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"email@test.com\",\n\t\"password\":\"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"url": "http://localhost:9090/console/auth/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"email@test.com\",\n\t\"password\":\"password\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ApiKey",
+			"description": "",
+			"item": [
+				{
+					"name": "create api key",
+					"request": {
+						"url": "http://localhost:9090/console/api/key",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWFpbEB0ZXN0LmNvbSIsImlhdCI6MTU2MzczODU4OSwiZXhwIjoxNTYzNzM5NDg5fQ.DBjTTEETMWqhSPybKkCFuBDnFJp20Vf0fEeaLyxiXBoazzcx2glaj1c7n6nopmy6PiqbNw35yumLgLcmpeE6gw",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "create api key - no authorization",
+					"request": {
+						"url": "http://localhost:9090/console/api/key",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "create api key - invalid authorisation",
+					"request": {
+						"url": "http://localhost:9090/console/api/key",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWFpbEB0ZXN0LmNvbSIsImlhdCI6MTU2MzczODU4OSwiZXhwIjoxNTYzNzM5NDg5fQ.DBjTTEETMWqhSPybKkCFuBDnFJp20Vf0fEeaLyxiXBoazzcx2glaj1c7n6nompeE6gw3",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

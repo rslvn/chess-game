@@ -10,13 +10,19 @@
       - [microservices](#microservices)
       - [APIs/documentation](#apisdocumentation)
       - [database](#database)
+      - [roles](#roles)
     - [chess-game](#chess-game)
       - [external front-end](#external-front-end)
       - [microservices](#microservices-1)
       - [APIs/documentation](#apisdocumentation-1)
       - [database](#database-1)
       - [caching](#caching)
+      - [roles](#roles-1)
   - [deployment](#deployment)
+  - [build](#build)
+  - [development test](#development-test)
+    - [unit test](#unit-test)
+    - [postman](#postman)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -31,7 +37,6 @@ The application has 2 different main applications. The applications are `chess-c
  
  
 ![ChessGameOverview](doc/ChessGameOverview.png)
-
 
 ## prerequisites
 - JDK1.8
@@ -130,13 +135,45 @@ All database models has `hibernate/JPA` descriptions.
 Normally, the data is in database. But going to database to have user data for all request, brings extra load to the system. In distributed systems the cache must be external. 
 `Redis` is used in this application
 
+#### roles
+The `chess-console` has 2 roles.
+- ADMIN: the administrator user of the game application. Admins can list all resources but can delete or update just their own resources.
+- PLAYER: the player. Players can join a league, win trophies and play game.
+
 ## deployment
 
 All microservices has their own `Dockerfile`s. The `docker` files contains all configurations to run the app and integrate the app with the other microservices. 
 
 `docker-compose` builds all `docker` images and run the docker containers with necessary scaling.
 
-#### roles
-The `chess-console` has 2 roles.
-- ADMIN: the administrator user of the game application. Admins can list all resources but can delete or update just their own resources.
-- PLAYER: the player. Players can join a league, win trophies and play game.
+
+to build:
+
+    docker-compose build
+ 
+to run:
+    
+    docker-compose up -d
+    
+to scale:
+
+    docker-compose scale server=3
+    
+to stop:
+
+    docker-compose down
+
+## build
+    gradle clean build
+    
+## development test
+
+### unit test
+
+`pojo-tester` is used to automate model/dto tests. All related tests under `domain` package.
+
+    testImplementation 'pl.pojo:pojo-tester:0.7.6'
+
+### postman
+    
+There is an experimental code. To test the experimental code, import the postman [file](doc/ChessGame.postman.json)
